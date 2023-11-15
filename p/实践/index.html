@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Wonder3D环境配置 项目仓库 项目论文 准备系统环境 系统为ubuntu18.04以上系统，anaconda环境装好，cuda版本为11.8或'>
+<title>Wonder3D项目环境配置和运行</title>
+
+<link rel='canonical' href='https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/'>
+
+<link rel="stylesheet" href="/scss/style.min.f260df320e6fda79722dc5e57340e38ef02a1623b751794ace472307bbc6d6c1.css"><meta property='og:title' content='Wonder3D项目环境配置和运行'>
+<meta property='og:description' content='Wonder3D环境配置 项目仓库 项目论文 准备系统环境 系统为ubuntu18.04以上系统，anaconda环境装好，cuda版本为11.8或'>
+<meta property='og:url' content='https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/'>
+<meta property='og:site_name' content='ZHY の blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='server' /><meta property='article:published_time' content='2023-11-15T19:37:07&#43;08:00'/><meta property='article:modified_time' content='2023-11-15T19:37:07&#43;08:00'/><meta property='og:image' content='https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/fig_teaser.png' />
+<meta name="twitter:title" content="Wonder3D项目环境配置和运行">
+<meta name="twitter:description" content="Wonder3D环境配置 项目仓库 项目论文 准备系统环境 系统为ubuntu18.04以上系统，anaconda环境装好，cuda版本为11.8或"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/fig_teaser.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/kabi_hu1d7d03c46f4a66caa26ac6cabac033d1_17380_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">ZHY の blog</a></h1>
+            <h2 class="site-description">long may the sun shine!🌞</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/345606188?spm_id_from=333.1007.0.0'
+                        target="_blank"
+                        title="Bilibilibi"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1699352980172" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1488" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path d="M306.005333 117.632L444.330667 256h135.296l138.368-138.325333a42.666667 42.666667 0 0 1 60.373333 60.373333L700.330667 256H789.333333A149.333333 149.333333 0 0 1 938.666667 405.333333v341.333334a149.333333 149.333333 0 0 1-149.333334 149.333333h-554.666666A149.333333 149.333333 0 0 1 85.333333 746.666667v-341.333334A149.333333 149.333333 0 0 1 234.666667 256h88.96L245.632 177.962667a42.666667 42.666667 0 0 1 60.373333-60.373334zM789.333333 341.333333h-554.666666a64 64 0 0 0-63.701334 57.856L170.666667 405.333333v341.333334a64 64 0 0 0 57.856 63.701333L234.666667 810.666667h554.666666a64 64 0 0 0 63.701334-57.856L853.333333 746.666667v-341.333334A64 64 0 0 0 789.333333 341.333333zM341.333333 469.333333a42.666667 42.666667 0 0 1 42.666667 42.666667v85.333333a42.666667 42.666667 0 0 1-85.333333 0v-85.333333a42.666667 42.666667 0 0 1 42.666666-42.666667z m341.333334 0a42.666667 42.666667 0 0 1 42.666666 42.666667v85.333333a42.666667 42.666667 0 0 1-85.333333 0v-85.333333a42.666667 42.666667 0 0 1 42.666667-42.666667z" p-id="1489"></path></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/ZHY2019302848'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1699973580754" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4013" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path d="M251.008 795.861333c-12.8-8.533333-23.808-19.413333-36.693333-34.816a2146.986667 2146.986667 0 0 1-19.882667-24.704c-19.754667-24.533333-32.213333-35.84-45.098667-40.490666a42.666667 42.666667 0 0 1 28.842667-80.341334c32.085333 11.52 53.802667 31.36 83.072 67.754667-4.010667-4.992 14.506667 18.218667 18.474667 22.997333 8.106667 9.685333 14.08 15.573333 18.773333 18.688 8.704 5.845333 25.045333 8.362667 49.066667 5.973334 0.981333-16.298667 4.010667-32.128 8.618666-46.72C229.546667 653.226667 157.866667 571.562667 157.866667 411.306667c0-52.906667 15.786667-100.522667 45.141333-140.458667-9.301333-38.144-7.893333-84.266667 12.885333-136.192a42.666667 42.666667 0 0 1 26.88-24.832c3.456-1.024 5.418667-1.493333 8.874667-2.005333 34.261333-5.248 82.645333 7.253333 145.706667 46.762666A500.522667 500.522667 0 0 1 512 141.44c38.912 0 77.568 4.437333 114.517333 13.141333 63.018667-39.808 111.488-52.309333 146.005334-46.762666 3.626667 0.554667 6.698667 1.28 9.301333 2.133333a42.666667 42.666667 0 0 1 26.282667 24.746667c20.778667 51.882667 22.186667 98.005333 12.885333 136.106666 29.482667 39.936 45.141333 87.253333 45.141333 140.501334 0 160.298667-71.424 241.706667-198.058666 272.725333 5.333333 17.706667 8.106667 37.504 8.106666 58.88a12820.992 12820.992 0 0 1-0.512 115.882667 42.666667 42.666667 0 0 1-0.810666 83.541333c-48.597333 9.728-84.608-22.698667-84.608-65.066667l0.085333-19.029333 0.213333-30.08c0.213333-30.208 0.298667-57.088 0.298667-85.248 0-29.738667-7.808-49.152-18.133333-58.026667-28.202667-24.32-13.909333-70.613333 23.04-74.752 126.592-14.208 185.045333-63.232 185.045333-198.826666 0-40.746667-13.312-74.410667-38.954667-102.570667a42.666667 42.666667 0 0 1-8.106666-44.586667c7.082667-17.664 10.112-40.832 4.096-68.864l-0.426667 0.128c-20.949333 5.930667-47.36 18.773333-79.274667 40.490667a42.666667 42.666667 0 0 1-35.541333 5.76A410.709333 410.709333 0 0 0 512 226.773333c-37.973333 0-75.605333 5.077333-110.592 14.933334a42.666667 42.666667 0 0 1-35.413333-5.717334c-32.085333-21.632-58.624-34.432-79.701334-40.405333-6.144 27.861333-3.114667 50.944 3.925334 68.565333a42.666667 42.666667 0 0 1-8.064 44.586667C256.682667 336.64 243.2 370.944 243.2 411.306667c0 135.338667 58.496 184.661333 184.405333 198.826666 36.906667 4.138667 51.242667 50.218667 23.210667 74.581334-8.192 7.168-18.304 31.232-18.304 58.197333v134.4c0 42.069333-35.626667 73.6-83.626667 65.194667a42.666667 42.666667 0 0 1-1.706666-83.712v-42.24c-38.826667 2.602667-70.912-3.754667-96.170667-20.693334z" p-id="4014"></path></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#准备系统环境">准备系统环境</a></li>
+    <li><a href="#安装环境">安装环境</a></li>
+    <li><a href="#运行项目">运行项目</a></li>
+    <li><a href="#尝试其他图片">尝试其他图片</a>
+      <ol>
+        <li><a href="#car1">car1</a></li>
+        <li><a href="#car2">car2</a></li>
+        <li><a href="#car3">car3</a></li>
+      </ol>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E5%AE%9E%E8%B7%B5/">
+                <img src="/p/%E5%AE%9E%E8%B7%B5/fig_teaser_hu5f338f1929158fc1dbd893b6f223493f_1271319_800x0_resize_box_3.png"
+                        srcset="/p/%E5%AE%9E%E8%B7%B5/fig_teaser_hu5f338f1929158fc1dbd893b6f223493f_1271319_800x0_resize_box_3.png 800w, /p/%E5%AE%9E%E8%B7%B5/fig_teaser_hu5f338f1929158fc1dbd893b6f223493f_1271319_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="695" 
+                        loading="lazy"
+                        alt="Featured image of post Wonder3D项目环境配置和运行" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AE%9E%E8%B7%B5/" >
+                实践
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E5%AE%9E%E8%B7%B5/">Wonder3D项目环境配置和运行</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2023/11/15</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 3 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="wonder3d环境配置">Wonder3D环境配置</h1>
+<p><a class="link" href="https://github.com/xxlong0/Wonder3D"  target="_blank" rel="noopener"
+    >项目仓库</a></p>
+<p><a class="link" href="https://arxiv.org/abs/2310.15008"  target="_blank" rel="noopener"
+    >项目论文</a></p>
+<h2 id="准备系统环境">准备系统环境</h2>
+<p>系统为<strong>ubuntu18.04</strong>以上系统，<strong>anaconda</strong>环境装好，<strong>cuda</strong>版本为11.8或11.7，测试用12.2会报错，<strong>gcc</strong>版本8以上，<strong>python</strong>3.8以上，显卡确保<strong>显存</strong>足够，我先后在2080ti和titan显卡上均测试过，cuda版本为11.3和11.2，都会报cuda和pytorch版本不匹配的错，最后在4090上成功运行，所以一个准确合适的环境是重要前提。</p>
+<h2 id="安装环境">安装环境</h2>
+<p>只要上一步系统环境准备完好，接下来依照官方教程即可</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">conda create -n wonder3d <span class="nv">python</span><span class="o">=</span>3.10 <span class="c1">#这里用3.10是怕再有奇怪的报错，所以把版本调高</span>
+</span></span><span class="line"><span class="cl">conda activate wonder3d
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这两步结束后，先查看python和pip的路径是conda虚拟环境，用<code>which python</code>和<code>which pip</code>查询，如果返回时虚拟环境的路径，可以跳过这一步骤，如果不是
+，显示为local路径，可以先退出现在的base环境，然后在换回来wonder3d环境</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">conda deactivate <span class="c1">#退出wonder3d</span>
+</span></span><span class="line"><span class="cl">conda deactivate <span class="c1">#退出base</span>
+</span></span><span class="line"><span class="cl">conda activate wonder3d <span class="c1">#重新激活环境</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>下面是项目下载和必要环境的安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">git clone https://github.com/xxlong0/Wonder3D #这里如果速度慢可以参考上一篇<span class="s2">&#34;服务器网络问题解决方案&#34;</span>，但这个只能用于大学教研室或是公司本地服务器
+</span></span><span class="line"><span class="cl"><span class="k">cd</span> Wonder3D
+</span></span><span class="line"><span class="cl">pip install -r requirements.txt #这要下很久，可以去泡杯茶
+</span></span><span class="line"><span class="cl">pip install git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch #这里很容易出问题，大部分问题都可以在<span class="s2">&#34;准备系统环境&#34;</span>中解决
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>安装完后看一下自己torch是否安装成功</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">__verison__</span><span class="p">)</span><span class="c1">#查看版本号是否对应后退出即可</span>
+</span></span><span class="line"><span class="cl"><span class="n">exit</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="运行项目">运行项目</h2>
+<p>先下载<a class="link" href="https://connecthkuhk-my.sharepoint.com/personal/xxlong_connect_hku_hk/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fxxlong%5Fconnect%5Fhku%5Fhk%2FDocuments%2Fwonder3d%2Fpretrained%2Dweights%2Fckpts&amp;ga=1"  target="_blank" rel="noopener"
+    >checkpoint</a>文件复制到指定目录下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Wonder3D
+</span></span><span class="line"><span class="cl">|-- ckpts
+</span></span><span class="line"><span class="cl">    |-- unet
+</span></span><span class="line"><span class="cl">    |-- scheduler.bin
+</span></span><span class="line"><span class="cl">    ...
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>之后可以直接运行命令看一下效果，代码会默认跑一只猫头鹰</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bash run_test.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>同理，此处出现错误请返回<em>系统环境</em>和<em>安装环境</em>这两个步骤查看是否出错，如果按照错误提示打补丁很可能越补窟窿越大
+运行完成后可以在<code>./outputs</code>下查找相关文件，应该6个一一对应的法线图和色彩图</p>
+<p>之后生成mesh obj文件，这里我只试了官方的第一种方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> ./instant-nsr-pl
+</span></span><span class="line"><span class="cl">bash run.sh output_folder_path scene_name
+</span></span><span class="line"><span class="cl"><span class="c1">#第二条命令示例为:</span>
+</span></span><span class="line"><span class="cl">bash run.sh  ../outputs/cropsize-192-cfg3.0 owl
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>生成完成后可以用<code>ls</code>命令找哪个文件夹是新生成的说明obj文件就存在哪了</p>
+<p>如果想要替换自己的图片，先把图片的背景去掉，在线网站就可以完成，然后去找<code>/wonder/configs/mvdiffusion-joint-ortho-6views.yaml</code>，修改如下内容即可
+<img src="/p/%E5%AE%9E%E8%B7%B5/config.png"
+	width="933"
+	height="776"
+	srcset="/p/%E5%AE%9E%E8%B7%B5/config_hu680ea5fa53f236b96ac97b11244b0a3f_53960_480x0_resize_box_3.png 480w, /p/%E5%AE%9E%E8%B7%B5/config_hu680ea5fa53f236b96ac97b11244b0a3f_53960_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="120"
+		data-flex-basis="288px"
+	
+></p>
+<h2 id="尝试其他图片">尝试其他图片</h2>
+<p>我用该方法尝试了下最近师姐让找的car图片，因为该项目训练时没有车的训练模型，所以图生3D的效果不是十分理想。</p>
+<h3 id="car1">car1</h3>
+<p><img src="/p/%E5%AE%9E%E8%B7%B5/car1.png"
+	width="666"
+	height="375"
+	srcset="/p/%E5%AE%9E%E8%B7%B5/car1_hua33df5c553c5de33c17b0e9beeec6816_122583_480x0_resize_box_3.png 480w, /p/%E5%AE%9E%E8%B7%B5/car1_hua33df5c553c5de33c17b0e9beeec6816_122583_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="原车"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="426px"
+	
+><img src="/p/%E5%AE%9E%E8%B7%B5/car1mesh.png"
+	width="697"
+	height="420"
+	srcset="/p/%E5%AE%9E%E8%B7%B5/car1mesh_hu7f4f862421abf55d2bf8e16b8a1e20ef_133668_480x0_resize_box_3.png 480w, /p/%E5%AE%9E%E8%B7%B5/car1mesh_hu7f4f862421abf55d2bf8e16b8a1e20ef_133668_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="生成mesh"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="165"
+		data-flex-basis="398px"
+	
+></p>
+<h3 id="car2">car2</h3>
+<p><img src="/p/%E5%AE%9E%E8%B7%B5/car2.png"
+	width="666"
+	height="375"
+	srcset="/p/%E5%AE%9E%E8%B7%B5/car2_hu0a7c5d1860557a59974962ad216667a4_221663_480x0_resize_box_3.png 480w, /p/%E5%AE%9E%E8%B7%B5/car2_hu0a7c5d1860557a59974962ad216667a4_221663_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="原车"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="426px"
+	
+><img src="/p/%E5%AE%9E%E8%B7%B5/car2mesh.png"
+	width="658"
+	height="487"
+	srcset="/p/%E5%AE%9E%E8%B7%B5/car2mesh_hube032fac02885aef4f25710d86981094_183729_480x0_resize_box_3.png 480w, /p/%E5%AE%9E%E8%B7%B5/car2mesh_hube032fac02885aef4f25710d86981094_183729_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="生成mesh"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="135"
+		data-flex-basis="324px"
+	
+></p>
+<h3 id="car3">car3</h3>
+<p><img src="/p/%E5%AE%9E%E8%B7%B5/car3.png"
+	width="667"
+	height="374"
+	srcset="/p/%E5%AE%9E%E8%B7%B5/car3_hu1a9eed947bd6821309cee077ec571e3e_130067_480x0_resize_box_3.png 480w, /p/%E5%AE%9E%E8%B7%B5/car3_hu1a9eed947bd6821309cee077ec571e3e_130067_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="原车"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="178"
+		data-flex-basis="428px"
+	
+><img src="/p/%E5%AE%9E%E8%B7%B5/car3mesh.png"
+	width="664"
+	height="519"
+	srcset="/p/%E5%AE%9E%E8%B7%B5/car3mesh_hu5f95e2064f5cf6dd25d7a4e0df34aee3_149793_480x0_resize_box_3.png 480w, /p/%E5%AE%9E%E8%B7%B5/car3mesh_hu5f95e2064f5cf6dd25d7a4e0df34aee3_149793_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="生成mesh"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="127"
+		data-flex-basis="307px"
+	
+></p>
+<h2 id="总结">总结</h2>
+<p>锻炼了自己的环境配置功力，还有在项目介绍看到可以使用正交相机来完成对obj色彩的显示，原文如下：</p>
+<blockquote>
+<p>Our generated normals and color images are defined in orthographic views, so the reconstructed mesh is also in orthographic camera space. If you use MeshLab to view the meshes</p>
+</blockquote>
+<p>这个可以帮到我最近在研究的对对房屋mesh涂上迷彩的问题。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/server/">server</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>转载需要保留原始链接，未经明确许可，禁止商业使用。<a class="link" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"  target="_blank" rel="noopener"
+    >CC BY-NC-SA 4.0</a></span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 ZHY
+    </section>
+    
+    <section class="powerby">
+        使用<a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.21.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
