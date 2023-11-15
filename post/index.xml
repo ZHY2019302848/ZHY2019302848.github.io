@@ -14,10 +14,10 @@
         
         <guid>https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/</guid>
         <description>&lt;h1 id=&#34;wonder3d环境配置&#34;&gt;Wonder3D环境配置&lt;/h1&gt;
-&lt;p&gt;项目仓库：&lt;a class=&#34;link&#34; href=&#34;https://github.com/xxlong0/Wonder3D&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/xxlong0/Wonder3D&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;项目论文：&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2310.15008&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://arxiv.org/abs/2310.15008&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/xxlong0/Wonder3D&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;项目仓库&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2310.15008&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;项目论文&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;准备系统环境&#34;&gt;准备系统环境&lt;/h2&gt;
 &lt;p&gt;系统为&lt;strong&gt;ubuntu18.04&lt;/strong&gt;以上系统，&lt;strong&gt;anaconda&lt;/strong&gt;环境装好，&lt;strong&gt;cuda&lt;/strong&gt;版本为11.8或11.7，测试用12.2会报错，&lt;strong&gt;gcc&lt;/strong&gt;版本8以上，&lt;strong&gt;python&lt;/strong&gt;3.8以上，显卡确保&lt;strong&gt;显存&lt;/strong&gt;足够，我先后在2080ti和titan显卡上均测试过，cuda版本为11.3和11.2，都会报cuda和pytorch版本不匹配的错，最后在4090上成功运行，所以一个准确合适的环境是重要前提。&lt;/p&gt;
 &lt;h2 id=&#34;安装环境&#34;&gt;安装环境&lt;/h2&gt;
