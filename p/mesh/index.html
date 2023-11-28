@@ -345,8 +345,149 @@
 <p>现在有可用的房屋mesh数据862个。</p>
 <h2 id="本周plan">本周PLAN</h2>
 <h3 id="删除无用纹理图片">删除无用纹理图片</h3>
-<h3 id="对建筑进行划分">对建筑进行划分</h3>
+<p>写一个py脚本，先存储每一个mtl文件中提到的jpg文件，之后在wenli文件夹下搜索，只要是没有使用过的图片就删除,去除无用数据。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#&#34;E:/UrbanBIS_useful/test&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">re</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">extract_texture_names</span><span class="p">(</span><span class="n">mtl_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">texture_names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">mtl_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">mtl_file</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">mtl_file</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="k">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;map_Kd\s+\.\.\/\.\.\/wenli\/([^\s]+\.jpg)&#39;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="k">match</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">texture_name</span> <span class="o">=</span> <span class="k">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">texture_names</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">texture_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">texture_names</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">delete_unused_textures</span><span class="p">(</span><span class="n">wenli_dir</span><span class="p">,</span> <span class="n">used_texture_names</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">texture_file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">wenli_dir</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">texture_file</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.jpg&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">texture_file</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">used_texture_names</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">texture_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">wenli_dir</span><span class="p">,</span> <span class="n">texture_file</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># Delete the texture file</span>
+</span></span><span class="line"><span class="cl">            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">texture_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Deleted: </span><span class="si">{</span><span class="n">texture_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">process_building_folder</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">building_folder</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">building_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">building_folder</span><span class="p">,</span> <span class="s1">&#39;building&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Process each sub-building folder</span>
+</span></span><span class="line"><span class="cl">    <span class="n">all_used_texture_names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">sub_building_folder</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">building_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sub_building_folder_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">building_path</span><span class="p">,</span> <span class="n">sub_building_folder</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Check if the item is a directory</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">sub_building_folder_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mtl_files_path</span> <span class="o">=</span> <span class="n">sub_building_folder_path</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1"># Process the MTL files</span>
+</span></span><span class="line"><span class="cl">            <span class="n">used_texture_names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">mtl_file_name</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">mtl_files_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">mtl_file_name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&#34;.mtl&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">mtl_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mtl_files_path</span><span class="p">,</span> <span class="n">mtl_file_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">used_texture_names</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">extract_texture_names</span><span class="p">(</span><span class="n">mtl_file_path</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1"># Merge used texture names from each sub-building folder</span>
+</span></span><span class="line"><span class="cl">            <span class="n">all_used_texture_names</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">used_texture_names</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Print the merged used texture names</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Used texture names in </span><span class="si">{</span><span class="n">building_folder</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">all_used_texture_names</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Delete unused textures in the wenli directory</span>
+</span></span><span class="line"><span class="cl">    <span class="n">wenli_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">building_folder</span><span class="p">,</span> <span class="s1">&#39;wenli&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">delete_unused_textures</span><span class="p">(</span><span class="n">wenli_dir</span><span class="p">,</span> <span class="n">all_used_texture_names</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">root_directory</span> <span class="o">=</span> <span class="s2">&#34;E:/UrbanBIS_useful/mesh/Yuehai&#34;</span>  <span class="c1"># Adjust this based on your directory structure</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Iterate through all subdirectories in the &#34;Longhua&#34; folder</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">building_folder</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">root_directory</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">building_folder_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_directory</span><span class="p">,</span> <span class="n">building_folder</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Check if the item is a directory</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">building_folder_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">process_building_folder</span><span class="p">(</span><span class="n">root_directory</span><span class="p">,</span> <span class="n">building_folder</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="对建筑进行划分">对建筑进行划分</h3>
+<p>好像只能纯手工去干，没想到什么好方法</p>
 <h3 id="给之前的building3d建筑加纹理-">给之前的Building3D建筑加纹理 :（</h3>
+<p>继续学opengl，但感觉可以用另一种方法解决。</p>
 
 </section>
 
