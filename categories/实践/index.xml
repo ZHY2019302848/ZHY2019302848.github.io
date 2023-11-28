@@ -7,13 +7,28 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ZHY</copyright>
-        <lastBuildDate>Wed, 15 Nov 2023 19:37:07 +0800</lastBuildDate><atom:link href="https://ZHY2019302848.github.io/categories/%E5%AE%9E%E8%B7%B5/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 28 Nov 2023 11:02:09 +0800</lastBuildDate><atom:link href="https://ZHY2019302848.github.io/categories/%E5%AE%9E%E8%B7%B5/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Mesh</title>
+        <link>https://ZHY2019302848.github.io/p/mesh/</link>
+        <pubDate>Tue, 28 Nov 2023 11:02:09 +0800</pubDate>
+        
+        <guid>https://ZHY2019302848.github.io/p/mesh/</guid>
+        <description>&lt;h1 id=&#34;清洗urbanbis数据&#34;&gt;清洗UrbanBIS数据&lt;/h1&gt;
+&lt;p&gt;把Longhua Qingdao Wuhu Yingrenshi Yuehai五个城市的可用房屋mesh数据以及其对应的材质图片提取出来&lt;/p&gt;
+&lt;p&gt;现在有可用的房屋mesh数据862个。&lt;/p&gt;
+&lt;h2 id=&#34;本周plan&#34;&gt;本周PLAN&lt;/h2&gt;
+&lt;h3 id=&#34;删除无用纹理图片&#34;&gt;删除无用纹理图片&lt;/h3&gt;
+&lt;h3 id=&#34;对建筑进行划分&#34;&gt;对建筑进行划分&lt;/h3&gt;
+&lt;h3 id=&#34;给之前的building3d建筑加纹理-&#34;&gt;给之前的Building3D建筑加纹理 :（&lt;/h3&gt;
+</description>
+        </item>
+        <item>
         <title>Wonder3D项目环境配置和运行</title>
-        <link>https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/</link>
+        <link>https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/</link>
         <pubDate>Wed, 15 Nov 2023 19:37:07 +0800</pubDate>
         
-        <guid>https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/</guid>
-        <description>&lt;img src="https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/fig_teaser.png" alt="Featured image of post Wonder3D项目环境配置和运行" /&gt;&lt;h1 id=&#34;wonder3d环境配置&#34;&gt;Wonder3D环境配置&lt;/h1&gt;
+        <guid>https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/</guid>
+        <description>&lt;img src="https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/fig_teaser.png" alt="Featured image of post Wonder3D项目环境配置和运行" /&gt;&lt;h1 id=&#34;wonder3d环境配置&#34;&gt;Wonder3D环境配置&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/xxlong0/Wonder3D&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;项目仓库&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2310.15008&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -129,10 +144,10 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;生成完成后可以用&lt;code&gt;ls&lt;/code&gt;命令找哪个文件夹是新生成的说明obj文件就存在哪了&lt;/p&gt;
 &lt;p&gt;如果想要替换自己的图片，先把图片的背景去掉，在线网站就可以完成，然后去找&lt;code&gt;/wonder/configs/mvdiffusion-joint-ortho-6views.yaml&lt;/code&gt;，修改如下内容即可
-&lt;img src=&#34;https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/config.png&#34;
+&lt;img src=&#34;https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/config.png&#34;
 	width=&#34;933&#34;
 	height=&#34;776&#34;
-	srcset=&#34;https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/config_hu680ea5fa53f236b96ac97b11244b0a3f_53960_480x0_resize_box_3.png 480w, https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/config_hu680ea5fa53f236b96ac97b11244b0a3f_53960_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/config_hu680ea5fa53f236b96ac97b11244b0a3f_53960_480x0_resize_box_3.png 480w, https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/config_hu680ea5fa53f236b96ac97b11244b0a3f_53960_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -144,10 +159,10 @@
 &lt;h2 id=&#34;尝试其他图片&#34;&gt;尝试其他图片&lt;/h2&gt;
 &lt;p&gt;我用该方法尝试了下最近师姐让找的car图片，因为该项目训练时没有车的训练模型，所以图生3D的效果不是十分理想。&lt;/p&gt;
 &lt;h3 id=&#34;car1&#34;&gt;car1&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/car1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car1.png&#34;
 	width=&#34;666&#34;
 	height=&#34;375&#34;
-	srcset=&#34;https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/car1_hua33df5c553c5de33c17b0e9beeec6816_122583_480x0_resize_box_3.png 480w, https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/car1_hua33df5c553c5de33c17b0e9beeec6816_122583_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car1_hua33df5c553c5de33c17b0e9beeec6816_122583_480x0_resize_box_3.png 480w, https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car1_hua33df5c553c5de33c17b0e9beeec6816_122583_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;原车&#34;
@@ -157,10 +172,10 @@
 		data-flex-grow=&#34;177&#34;
 		data-flex-basis=&#34;426px&#34;
 	
-&gt;&lt;img src=&#34;https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/car1mesh.png&#34;
+&gt;&lt;img src=&#34;https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car1mesh.png&#34;
 	width=&#34;697&#34;
 	height=&#34;420&#34;
-	srcset=&#34;https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/car1mesh_hu7f4f862421abf55d2bf8e16b8a1e20ef_133668_480x0_resize_box_3.png 480w, https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/car1mesh_hu7f4f862421abf55d2bf8e16b8a1e20ef_133668_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car1mesh_hu7f4f862421abf55d2bf8e16b8a1e20ef_133668_480x0_resize_box_3.png 480w, https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car1mesh_hu7f4f862421abf55d2bf8e16b8a1e20ef_133668_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;生成mesh&#34;
@@ -172,10 +187,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;car2&#34;&gt;car2&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/car2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car2.png&#34;
 	width=&#34;666&#34;
 	height=&#34;375&#34;
-	srcset=&#34;https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/car2_hu0a7c5d1860557a59974962ad216667a4_221663_480x0_resize_box_3.png 480w, https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/car2_hu0a7c5d1860557a59974962ad216667a4_221663_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car2_hu0a7c5d1860557a59974962ad216667a4_221663_480x0_resize_box_3.png 480w, https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car2_hu0a7c5d1860557a59974962ad216667a4_221663_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;原车&#34;
@@ -185,10 +200,10 @@
 		data-flex-grow=&#34;177&#34;
 		data-flex-basis=&#34;426px&#34;
 	
-&gt;&lt;img src=&#34;https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/car2mesh.png&#34;
+&gt;&lt;img src=&#34;https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car2mesh.png&#34;
 	width=&#34;658&#34;
 	height=&#34;487&#34;
-	srcset=&#34;https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/car2mesh_hube032fac02885aef4f25710d86981094_183729_480x0_resize_box_3.png 480w, https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/car2mesh_hube032fac02885aef4f25710d86981094_183729_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car2mesh_hube032fac02885aef4f25710d86981094_183729_480x0_resize_box_3.png 480w, https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car2mesh_hube032fac02885aef4f25710d86981094_183729_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;生成mesh&#34;
@@ -200,10 +215,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;car3&#34;&gt;car3&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/car3.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car3.png&#34;
 	width=&#34;667&#34;
 	height=&#34;374&#34;
-	srcset=&#34;https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/car3_hu1a9eed947bd6821309cee077ec571e3e_130067_480x0_resize_box_3.png 480w, https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/car3_hu1a9eed947bd6821309cee077ec571e3e_130067_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car3_hu1a9eed947bd6821309cee077ec571e3e_130067_480x0_resize_box_3.png 480w, https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car3_hu1a9eed947bd6821309cee077ec571e3e_130067_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;原车&#34;
@@ -213,10 +228,10 @@
 		data-flex-grow=&#34;178&#34;
 		data-flex-basis=&#34;428px&#34;
 	
-&gt;&lt;img src=&#34;https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/car3mesh.png&#34;
+&gt;&lt;img src=&#34;https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car3mesh.png&#34;
 	width=&#34;664&#34;
 	height=&#34;519&#34;
-	srcset=&#34;https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/car3mesh_hu5f95e2064f5cf6dd25d7a4e0df34aee3_149793_480x0_resize_box_3.png 480w, https://ZHY2019302848.github.io/p/%E5%AE%9E%E8%B7%B5/car3mesh_hu5f95e2064f5cf6dd25d7a4e0df34aee3_149793_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car3mesh_hu5f95e2064f5cf6dd25d7a4e0df34aee3_149793_480x0_resize_box_3.png 480w, https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car3mesh_hu5f95e2064f5cf6dd25d7a4e0df34aee3_149793_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;生成mesh&#34;

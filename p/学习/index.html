@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Wonder3D环境配置 项目仓库 项目论文 准备系统环境 系统为ubuntu18.04以上系统，anaconda环境装好，cuda版本为11.8或'>
-<title>Wonder3D项目环境配置和运行</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='多目标追踪(Multi-Object-Tracking) 研究背景及意义 多目标跟踪(Multiple object tracking，MOT)的主要任务是从'>
+<title>MOT</title>
 
-<link rel='canonical' href='https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/'>
+<link rel='canonical' href='https://ZHY2019302848.github.io/p/%E5%AD%A6%E4%B9%A0/'>
 
-<link rel="stylesheet" href="/scss/style.min.f260df320e6fda79722dc5e57340e38ef02a1623b751794ace472307bbc6d6c1.css"><meta property='og:title' content='Wonder3D项目环境配置和运行'>
-<meta property='og:description' content='Wonder3D环境配置 项目仓库 项目论文 准备系统环境 系统为ubuntu18.04以上系统，anaconda环境装好，cuda版本为11.8或'>
-<meta property='og:url' content='https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/'>
+<link rel="stylesheet" href="/scss/style.min.f260df320e6fda79722dc5e57340e38ef02a1623b751794ace472307bbc6d6c1.css"><meta property='og:title' content='MOT'>
+<meta property='og:description' content='多目标追踪(Multi-Object-Tracking) 研究背景及意义 多目标跟踪(Multiple object tracking，MOT)的主要任务是从'>
+<meta property='og:url' content='https://ZHY2019302848.github.io/p/%E5%AD%A6%E4%B9%A0/'>
 <meta property='og:site_name' content='ZHY の blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='server' /><meta property='article:published_time' content='2023-11-15T19:37:07&#43;08:00'/><meta property='article:modified_time' content='2023-11-15T19:37:07&#43;08:00'/><meta property='og:image' content='https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/fig_teaser.png' />
-<meta name="twitter:title" content="Wonder3D项目环境配置和运行">
-<meta name="twitter:description" content="Wonder3D环境配置 项目仓库 项目论文 准备系统环境 系统为ubuntu18.04以上系统，anaconda环境装好，cuda版本为11.8或"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/fig_teaser.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-11-23T18:31:02&#43;08:00'/><meta property='article:modified_time' content='2023-11-23T18:31:02&#43;08:00'/>
+<meta name="twitter:title" content="MOT">
+<meta name="twitter:description" content="多目标追踪(Multi-Object-Tracking) 研究背景及意义 多目标跟踪(Multiple object tracking，MOT)的主要任务是从">
     <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
@@ -255,16 +254,25 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#准备系统环境">准备系统环境</a></li>
-    <li><a href="#安装环境">安装环境</a></li>
-    <li><a href="#运行项目">运行项目</a></li>
-    <li><a href="#尝试其他图片">尝试其他图片</a>
+    <li><a href="#研究背景及意义">研究背景及意义</a>
       <ol>
-        <li><a href="#car1">car1</a></li>
-        <li><a href="#car2">car2</a></li>
-        <li><a href="#car3">car3</a></li>
+        <li><a href="#研究难点">研究难点</a></li>
+        <li><a href="#评价指标">评价指标</a></li>
       </ol>
     </li>
+    <li><a href="#经典方法">经典方法</a>
+      <ol>
+        <li><a href="#mot算法分类"><em>MOT算法分类</em></a>
+          <ol>
+            <li><a href="#基于sdeseparate-detectionand-embedding范式的方法">基于SDE(<em>Separate Detectionand Embedding</em>)范式的方法</a></li>
+            <li><a href="#基于jdejoint-detection-and-embedding范式的方法">基于JDE(<em>Joint Detection and Embedding</em>)范式的方法</a></li>
+            <li><a href="#基于jdtjoint-detectionand-tracking范式的方法">基于JDT(<em>Joint Detectionand Tracking</em>)范式的方法</a></li>
+          </ol>
+        </li>
+        <li><a href="#目标追踪方法"><em>目标追踪方法</em></a></li>
+      </ol>
+    </li>
+    <li><a href="#论文复现">论文复现</a></li>
     <li><a href="#总结">总结</a></li>
   </ol>
 </nav>
@@ -277,27 +285,15 @@
 
 
             <main class="main full-width">
-    <article class="has-image main-article">
+    <article class="main-article">
     <header class="article-header">
-        <div class="article-image">
-            <a href="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/">
-                <img src="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/fig_teaser_hu5f338f1929158fc1dbd893b6f223493f_1271319_800x0_resize_box_3.png"
-                        srcset="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/fig_teaser_hu5f338f1929158fc1dbd893b6f223493f_1271319_800x0_resize_box_3.png 800w, /p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/fig_teaser_hu5f338f1929158fc1dbd893b6f223493f_1271319_1600x0_resize_box_3.png 1600w"
-                        width="800" 
-                        height="695" 
-                        loading="lazy"
-                        alt="Featured image of post Wonder3D项目环境配置和运行" />
-                
-            </a>
-        </div>
-    
 
     <div class="article-details">
     
     <header class="article-category">
         
-            <a href="/categories/%E5%AE%9E%E8%B7%B5/" >
-                实践
+            <a href="/categories/%E5%AD%A6%E4%B9%A0/" >
+                学习
             </a>
         
     </header>
@@ -305,7 +301,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/">Wonder3D项目环境配置和运行</a>
+            <a href="/p/%E5%AD%A6%E4%B9%A0/">MOT</a>
         </h2>
     
         
@@ -327,7 +323,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2023/11/15</time>
+                <time class="article-time--published">2023/11/23</time>
             </div>
         
 
@@ -342,7 +338,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 3 分钟
+                    阅读时长: 7 分钟
                 </time>
             </div>
         
@@ -357,238 +353,119 @@
     <section class="article-content">
     
     
-    <h1 id="wonder3d环境配置">Wonder3D环境配置</h1>
-<p><a class="link" href="https://github.com/xxlong0/Wonder3D"  target="_blank" rel="noopener"
-    >项目仓库</a></p>
-<p><a class="link" href="https://arxiv.org/abs/2310.15008"  target="_blank" rel="noopener"
-    >项目论文</a></p>
-<h2 id="准备系统环境">准备系统环境</h2>
-<p>系统为<strong>ubuntu18.04</strong>以上系统，<strong>anaconda</strong>环境装好，<strong>cuda</strong>版本为11.8或11.7，测试用12.2会报错，<strong>gcc</strong>版本8以上，<strong>python</strong>3.8以上，显卡确保<strong>显存</strong>足够，我先后在2080ti和titan显卡上均测试过，cuda版本为11.3和11.2，都会报cuda和pytorch版本不匹配的错，最后在4090上成功运行，所以一个准确合适的环境是重要前提。</p>
-<h2 id="安装环境">安装环境</h2>
-<p>只要上一步系统环境准备完好，接下来依照官方教程即可</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">conda create -n wonder3d <span class="nv">python</span><span class="o">=</span>3.10 <span class="c1">#这里用3.10是怕再有奇怪的报错，所以把版本调高</span>
-</span></span><span class="line"><span class="cl">conda activate wonder3d
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>这两步结束后，先查看python和pip的路径是conda虚拟环境，用<code>which python</code>和<code>which pip</code>查询，如果返回时虚拟环境的路径，可以跳过这一步骤，如果不是
-，显示为local路径，可以先退出现在的base环境，然后在换回来wonder3d环境</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">conda deactivate <span class="c1">#退出wonder3d</span>
-</span></span><span class="line"><span class="cl">conda deactivate <span class="c1">#退出base</span>
-</span></span><span class="line"><span class="cl">conda activate wonder3d <span class="c1">#重新激活环境</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>下面是项目下载和必要环境的安装</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">git clone https://github.com/xxlong0/Wonder3D #这里如果速度慢可以参考上一篇<span class="s2">&#34;服务器网络问题解决方案&#34;</span>，但这个只能用于大学教研室或是公司本地服务器
-</span></span><span class="line"><span class="cl"><span class="k">cd</span> Wonder3D
-</span></span><span class="line"><span class="cl">pip install -r requirements.txt #这要下很久，可以去泡杯茶
-</span></span><span class="line"><span class="cl">pip install git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch #这里很容易出问题，大部分问题都可以在<span class="s2">&#34;准备系统环境&#34;</span>中解决
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>安装完后看一下自己torch是否安装成功</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">__verison__</span><span class="p">)</span><span class="c1">#查看版本号是否对应后退出即可</span>
-</span></span><span class="line"><span class="cl"><span class="n">exit</span><span class="p">()</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="运行项目">运行项目</h2>
-<p>先下载<a class="link" href="https://connecthkuhk-my.sharepoint.com/personal/xxlong_connect_hku_hk/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fxxlong%5Fconnect%5Fhku%5Fhk%2FDocuments%2Fwonder3d%2Fpretrained%2Dweights%2Fckpts&amp;ga=1"  target="_blank" rel="noopener"
-    >checkpoint</a>文件复制到指定目录下</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Wonder3D
-</span></span><span class="line"><span class="cl">|-- ckpts
-</span></span><span class="line"><span class="cl">    |-- unet
-</span></span><span class="line"><span class="cl">    |-- scheduler.bin
-</span></span><span class="line"><span class="cl">    ...
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>之后可以直接运行命令看一下效果，代码会默认跑一只猫头鹰</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bash run_test.sh
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>同理，此处出现错误请返回<em>系统环境</em>和<em>安装环境</em>这两个步骤查看是否出错，如果按照错误提示打补丁很可能越补窟窿越大
-运行完成后可以在<code>./outputs</code>下查找相关文件，应该6个一一对应的法线图和色彩图</p>
-<p>之后生成mesh obj文件，这里我只试了官方的第一种方法</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> ./instant-nsr-pl
-</span></span><span class="line"><span class="cl">bash run.sh output_folder_path scene_name
-</span></span><span class="line"><span class="cl"><span class="c1">#第二条命令示例为:</span>
-</span></span><span class="line"><span class="cl">bash run.sh  ../outputs/cropsize-192-cfg3.0 owl
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>生成完成后可以用<code>ls</code>命令找哪个文件夹是新生成的说明obj文件就存在哪了</p>
-<p>如果想要替换自己的图片，先把图片的背景去掉，在线网站就可以完成，然后去找<code>/wonder/configs/mvdiffusion-joint-ortho-6views.yaml</code>，修改如下内容即可
-<img src="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/config.png"
-	width="933"
-	height="776"
-	srcset="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/config_hu680ea5fa53f236b96ac97b11244b0a3f_53960_480x0_resize_box_3.png 480w, /p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/config_hu680ea5fa53f236b96ac97b11244b0a3f_53960_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="120"
-		data-flex-basis="288px"
-	
-></p>
-<h2 id="尝试其他图片">尝试其他图片</h2>
-<p>我用该方法尝试了下最近师姐让找的car图片，因为该项目训练时没有车的训练模型，所以图生3D的效果不是十分理想。</p>
-<h3 id="car1">car1</h3>
-<p><img src="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car1.png"
-	width="666"
-	height="375"
-	srcset="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car1_hua33df5c553c5de33c17b0e9beeec6816_122583_480x0_resize_box_3.png 480w, /p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car1_hua33df5c553c5de33c17b0e9beeec6816_122583_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="原车"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="177"
-		data-flex-basis="426px"
-	
-><img src="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car1mesh.png"
-	width="697"
-	height="420"
-	srcset="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car1mesh_hu7f4f862421abf55d2bf8e16b8a1e20ef_133668_480x0_resize_box_3.png 480w, /p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car1mesh_hu7f4f862421abf55d2bf8e16b8a1e20ef_133668_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="生成mesh"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="165"
-		data-flex-basis="398px"
-	
-></p>
-<h3 id="car2">car2</h3>
-<p><img src="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car2.png"
-	width="666"
-	height="375"
-	srcset="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car2_hu0a7c5d1860557a59974962ad216667a4_221663_480x0_resize_box_3.png 480w, /p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car2_hu0a7c5d1860557a59974962ad216667a4_221663_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="原车"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="177"
-		data-flex-basis="426px"
-	
-><img src="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car2mesh.png"
-	width="658"
-	height="487"
-	srcset="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car2mesh_hube032fac02885aef4f25710d86981094_183729_480x0_resize_box_3.png 480w, /p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car2mesh_hube032fac02885aef4f25710d86981094_183729_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="生成mesh"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="135"
-		data-flex-basis="324px"
-	
-></p>
-<h3 id="car3">car3</h3>
-<p><img src="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car3.png"
-	width="667"
-	height="374"
-	srcset="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car3_hu1a9eed947bd6821309cee077ec571e3e_130067_480x0_resize_box_3.png 480w, /p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car3_hu1a9eed947bd6821309cee077ec571e3e_130067_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="原车"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="178"
-		data-flex-basis="428px"
-	
-><img src="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car3mesh.png"
-	width="664"
-	height="519"
-	srcset="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car3mesh_hu5f95e2064f5cf6dd25d7a4e0df34aee3_149793_480x0_resize_box_3.png 480w, /p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car3mesh_hu5f95e2064f5cf6dd25d7a4e0df34aee3_149793_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="生成mesh"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="127"
-		data-flex-basis="307px"
-	
-></p>
+    <h1 id="多目标追踪multi-object-tracking">多目标追踪(Multi-Object-Tracking)</h1>
+<h2 id="研究背景及意义">研究背景及意义</h2>
+<ul>
+<li>多目标跟踪(Multiple object tracking，MOT)的主要任务是从给定视频中输出所有目标的运动轨迹，并维持各目标的身份信息(Identity，ID)。其中，跟踪目标可以是行人、车辆或其他对象。</li>
+</ul>
+<!-- 目标检测、特征提取 数据关联 -->
+<ol>
+<li>视频监控系统的普及： 随着视频监控系统在公共场所、交通系统、工业领域等的广泛应用，需要自动化地对视频中的多个目标进行实时监测和追踪。
+ <!-- 配图-->
+</li>
+<li>自动驾驶技术的发展： 在自动驾驶领域，多目标追踪对于车辆和行人的准确追踪至关重要，以确保车辆能够安全行驶并适应复杂的交通环境。
+ <!-- 配图-->
+</li>
+<li>智能交通系统的需求： 对于城市交通管理和规划来说，多目标追踪能够提供实时的交通流量信息、行人流动模式等，帮助改善交通系统的效率和安全性。
+ <!-- 配图-->
+</li>
+<li>人机交互与辅助技术： 在智能家居、虚拟现实等领域，多目标追踪有助于提供更智能的人机交互和环境感知。
+ <!-- 配图-->
+</li>
+<li>人工智能与机器学习： 多目标追踪是人工智能和机器学习领域的一个典型问题，解决这一问题涉及到对图像处理、目标检测、时空建模等多个方面的研究，有助于推动计算机视觉和机器学习的发展。
+ <!-- 配图-->
+</li>
+</ol>
+<h3 id="研究难点">研究难点</h3>
+<p>然而，在复杂场景下进行鲁棒跟踪仍是当前的研究难点，主要体现在以下几个个方面：</p>
+<ol>
+<li>目标变化： 在实际场景中，目标可能经历尺寸、形状、外观等多方面的变化，如遮挡、部分遮挡、光照变化等。这种变化使得目标的外观难以预测，需要算法具有强大的适应性和泛化能力。</li>
+<li>复杂运动： 目标在运动中可能出现快速变化、突然停止、加速等复杂运动模式。这使得算法需要能够准确地捕捉目标的运动状态，并且在快速变化的情况下保持稳定的跟踪性能。</li>
+<li>遮挡和交叉： 多目标追踪中，目标之间可能存在遮挡和交叉的情况。这种情况下，算法需要能够正确地分离和跟踪各个目标，避免混淆。</li>
+<li>非刚性目标： 一些目标可能是非刚性的，比如液体、布料等。这种类型的目标形状难以建模，因此需要算法能够处理非刚性目标的变形和运动。</li>
+<li>环境干扰： 多目标追踪系统通常在真实世界环境中运行，受到各种环境干扰的影响，如雨、雪、光照变化、阴影等。这些因素可能导致传感器数据的不稳定性，增加了目标跟踪的难度。</li>
+<li>大规模目标集合： 在一些应用场景中，可能需要同时跟踪大量目标，如交通监控、人群管理等。这会导致计算复杂度增加，需要高效的多目标跟踪算法来处理大规模目标集合。</li>
+<li>实时性要求： 在一些实时应用中，如自动驾驶、视频监控等，对目标跟踪算法的实时性要求非常高。算法需要在保持高准确性的同时，具备足够的计算效率，以满足实时处理的需求。</li>
+</ol>
+<h3 id="评价指标">评价指标</h3>
+<h2 id="经典方法">经典方法</h2>
+<h3 id="mot算法分类"><em>MOT算法分类</em></h3>
+<h4 id="基于sdeseparate-detectionand-embedding范式的方法">基于SDE(<em>Separate Detectionand Embedding</em>)范式的方法</h4>
+<h5 id="离线跟踪算法"><strong>离线跟踪算法</strong></h5>
+<p>离线跟踪可以看成是一个全局优化问题，给定所有视频帧的检测结果，将属于同一目标的检测结果全局关联到一条轨迹中。</p>
+<p>离线跟踪的关键是找到全局最优解。连续能量最小化是一种常用的全局优化方法，旨在将数据关联和轨迹估计整合到能量函数中，并通过构建运动模型来约束轨迹。另一种常用的全局优化策略是将MOT任务建模为一个图模型，其中每个顶点表示一个检测目标，顶点间的边表示目标间的相似性，然后通过匈牙利算法或贪婪算法确定各顶点的匹配关系。基于图模型的方法有网络流(Network Flow，NF)、条件随机场(CRF)、最小代价子图多切(Minimum Cost Subgraph Multicut，MC SM)和最大加权独立集(Maximum-Weight Independent Set，MWIS)等。</p>
+<p>由于在跟踪过程中可利用更多帧图像的信息，离线方法通常比在线方法具有更高的跟踪准确性和鲁棒性，但其计算量开销更高且实际应用范围相比在线方法较小。</p>
+<h5 id="在线跟踪算法"><strong>在线跟踪算法</strong></h5>
+<p>由于在线跟踪方法具有不依靠未来信息的特点，更契合实际需求，因此在线的跟踪算法成为如今的研究主流。在线跟踪方法通常按时间顺序逐帧关联目标，因此在线跟踪也被称为顺序跟踪。当前的在线跟踪方法常基于目标的运动和外观特征关联目标。早期的研究主要通过构建运动模型，基于目标的运动特征来跟踪目标。随后，受益于神经网络强大的特征提取能力，基于外观特征的跟踪算法吸引了广泛的关注。而为了进一步提升算法在各种复杂的场景下的跟踪准确性，结合运动和外观特征的MOT算法成为了当今的研究热点。</p>
+<p>可以分为三种（做一个图，后面跟上这些方法的优缺点）</p>
+<ol>
+<li>基于运动特征的方法
+<ul>
+<li>优点：有效应对短时间的遮挡且缓解了相似目标对模型的干扰</li>
+<li>缺点：由于外观特征的缺失，跟踪性能衰退明显</li>
+</ul>
+</li>
+<li>基于外观特征的方法
+<ul>
+<li>优点：跟踪能力更强，对目标尺度变换的鲁棒性更高</li>
+<li>缺点：有相似目标干扰的场景下容易发生跟踪框漂移等错误</li>
+</ul>
+</li>
+<li>结合运动和外观特征的方法
+<ul>
+<li>优点：跟踪准确性较高，应对复杂场景下的各种挑战具有更强的鲁棒性</li>
+<li>缺点：网络复杂度较高且计算量相对较大，跟踪速度较慢，难以达到实时跟踪的要求</li>
+</ul>
+</li>
+</ol>
+<h4 id="基于jdejoint-detection-and-embedding范式的方法">基于JDE(<em>Joint Detection and Embedding</em>)范式的方法</h4>
+<ul>
+<li>SDE的方法在跟踪过程中先后推理了目标检测和特征提取两个计算量较大的深度网络，这种高昂的计算开销限制了模型的跟踪速度，通过使目标检测和特征提取两个关键任务共享大量特征，即将两个任务融合到一个网格中去，JDE范式可以显著减少算法的计算量。</li>
+</ul>
+<p>优化的具体三点</p>
+<ol>
+<li>联合检测和嵌入
+JDE采用联合检测和嵌入的方式，通过一个统一的深度学习模型，同时执行目标检测和目标嵌入。</li>
+<li>JDE基于深度卷积神经网络（CNN），包含目标检测分支和目标嵌入分支，两者共享底层卷积层，以促使特征提取得到充分共享和协同训练。</li>
+<li>训练时采用联合训练策略，同时优化目标检测分支和目标嵌入分支的损失函数。损失函数包括目标检测的定位损失、分类损失，以及目标嵌入的三元损失等，平衡了目标检测和嵌入学习两个任务。</li>
+</ol>
+<h4 id="基于jdtjoint-detectionand-tracking范式的方法">基于JDT(<em>Joint Detectionand Tracking</em>)范式的方法</h4>
+<ul>
+<li>联合检测和跟踪在单个网格中完成三个子任务进行算法优化
+当前JDT范式的算法主要分为基于孪生网路的方法和Transformer的方法</li>
+</ul>
+<h5 id="基于孪生网络的方法"><strong>基于孪生网络的方法</strong></h5>
+<ol>
+<li>基本原理：孪生网络是标准CNN的一种变体。如图所示，基于孪生网络的方法通过两个共享权重的卷积层提取不同视频帧图像中目标的特征，结合不同图像信息学习目标更具判别性的特征。
+<!-- 图-->
+</li>
+<li>训练过程: 在训练孪生网络时，通常使用孪生三元损失（Siamese Triplet Loss）来优化网络参数。损失函数包括一个锚定样本、一个正样本和一个负样本，通过最小化锚定样本与正样本的距离同时最大化锚定样本与负样本的距离，使得相似的目标在嵌入空间中更加接近。</li>
+<li>目标跟踪过程：在跟踪时，通过比较当前帧目标图像和前一帧目标图像的特征表示相似性，判断目标是否相同。一些孪生网络方法还采用在线学习的策略，通过不断地更新孪生网络的权重，适应目标外观的变化，提高跟踪的鲁棒性。</li>
+</ol>
+<h5 id="transformer方法"><strong>Transformer方法</strong></h5>
+<ol>
+<li>基本原理:Transformer是一种基于自注意力机制的神经网络结构，广泛应用于序列建模任务。在目标跟踪中，可以将目标的位置信息作为序列输入，并使用Transformer模型来捕捉目标之间的关系。</li>
+<li>自注意力机制：Transformer使用自注意力机制来动态地捕获输入序列中各元素之间的关系，使得模型能够关注不同位置的信息，这其中的输入为目标的位置信息和特征，将二者嵌入组成序列。</li>
+<li>目标跟踪过程：Transformer可以输出每个目标的位置信息以及其他可能的特征，通过比较输出信息的相似性进行目标匹配，能够更好地处理目标之间的复杂关系和变化</li>
+</ol>
+<hr>
+<hr>
+<h3 id="目标追踪方法"><em>目标追踪方法</em></h3>
+<hr>
+<h2 id="论文复现">论文复现</h2>
 <h2 id="总结">总结</h2>
-<p>锻炼了自己的环境配置功力，还有在项目介绍看到可以使用正交相机来完成对obj色彩的显示，原文如下：</p>
-<blockquote>
-<p>Our generated normals and color images are defined in orthographic views, so the reconstructed mesh is also in orthographic camera space. If you use MeshLab to view the meshes</p>
-</blockquote>
-<p>这个可以帮到我最近在研究的对对房屋mesh涂上迷彩的问题。</p>
+<p>近年来，基于深度学习的MOT技术迅速发展，模型的跟踪性能取得了显著的提升，目前已有越来越多的技术被应用到MOT任务上，但目前还有许多值得探索的研究方向。</p>
+<ol>
+<li>无监督MOT：当前的MOT算法大多是基于监督学习，然而MOT数据集的标注需要逐帧寻找不同图像间的相同目标，需花费巨大的时间和经济成本。设计基于无监督学习的MOT算法有助于减少人工标注数据的开销，然而由于缺乏对跟踪目标的先验知识，无监督MOT任务具有很大的挑战性。</li>
+<li>目标间交互关系：通过对多个目标间的交互关系建模，可增强拥挤场景下模型对各目标的判别能力，然而当前算法对于目标间交互关系的探索依然较少。在今后的研究工作中，可采用Transformer或图神经网络对目标间的交互关系进行建模，从而进一步提升MOT算法在高峰时段的地铁站和节假日的旅游景点等极端拥挤场景下的跟踪鲁棒性。</li>
+<li>跟踪促进检测：当前的MOT算法跟踪性能依赖于检测算法，然而目前的MOT算法通常单独执行检测算法，并未探索目标在先前时刻的信息。充分利用目标的时空信息，将目标在过去时刻的运动和外观等特征传递到当前帧，有助于提升模型在执行交通车辆跟踪和赛场运动员行为分析等存在大量遮挡和运动模糊的跟踪任务时的跟踪性能。</li>
+</ol>
 
 </section>
 
 
     <footer class="article-footer">
     
-    <section class="article-tags">
-        
-            <a href="/tags/server/">server</a>
-        
-    </section>
-
 
     
     <section class="article-copyright">
@@ -612,28 +489,6 @@
     
 
     
-
-<aside class="related-content--wrapper">
-    <h2 class="section-title">相关文章</h2>
-    <div class="related-content">
-        <div class="flex article-list--tile">
-            
-                
-<article class="">
-    <a href="/p/mesh/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Mesh</h2>
-        </div>
-    </a>
-</article>
-
-            
-        </div>
-    </div>
-</aside>
 
      
     
