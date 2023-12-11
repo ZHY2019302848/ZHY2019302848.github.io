@@ -259,9 +259,9 @@
         <li><a href="#删除无用纹理图片">删除无用纹理图片</a></li>
         <li><a href="#对建筑进行划分">对建筑进行划分</a></li>
         <li><a href="#给之前的building3d建筑加纹理-">给之前的Building3D建筑加纹理 :（</a></li>
-        <li><a href="#搜集多目标追踪的评价指标相关内容并制作ppt">搜集多目标追踪的评价指标相关内容，并制作ppt</a></li>
       </ol>
     </li>
+    <li><a href="#一些常用命令总结">一些常用命令总结</a></li>
   </ol>
 </nav>
         </div>
@@ -326,7 +326,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 2 分钟
+                    阅读时长: 3 分钟
                 </time>
             </div>
         
@@ -412,16 +412,9 @@
 </span><span class="lnt">61
 </span><span class="lnt">62
 </span><span class="lnt">63
-</span><span class="lnt">64
-</span><span class="lnt">65
-</span><span class="lnt">66
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">#&#34;E:/UrbanBIS_useful/test&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">re</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">extract_texture_names</span><span class="p">(</span><span class="n">mtl_path</span><span class="p">):</span>
@@ -438,59 +431,265 @@
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">texture_file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">wenli_dir</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">texture_file</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.jpg&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">texture_file</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">used_texture_names</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">            <span class="n">texture_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">wenli_dir</span><span class="p">,</span> <span class="n">texture_file</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">            <span class="c1"># Delete the texture file</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># 删除不需要的纹理</span>
 </span></span><span class="line"><span class="cl">            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">texture_path</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Deleted: </span><span class="si">{</span><span class="n">texture_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">process_building_folder</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">building_folder</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="n">building_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">building_folder</span><span class="p">,</span> <span class="s1">&#39;building&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1"># Process each sub-building folder</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="n">all_used_texture_names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">sub_building_folder</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">building_path</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">        <span class="n">sub_building_folder_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">building_path</span><span class="p">,</span> <span class="n">sub_building_folder</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1"># Check if the item is a directory</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">sub_building_folder_path</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">            <span class="n">mtl_files_path</span> <span class="o">=</span> <span class="n">sub_building_folder_path</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">            <span class="c1"># Process the MTL files</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">            <span class="n">used_texture_names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1"># 针对mtl文件做图片名称提取</span>
 </span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">mtl_file_name</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">mtl_files_path</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">mtl_file_name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&#34;.mtl&#34;</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">                    <span class="n">mtl_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mtl_files_path</span><span class="p">,</span> <span class="n">mtl_file_name</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">                    <span class="n">used_texture_names</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">extract_texture_names</span><span class="p">(</span><span class="n">mtl_file_path</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">            <span class="c1"># Merge used texture names from each sub-building folder</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># 合并之前提取过的</span>
 </span></span><span class="line"><span class="cl">            <span class="n">all_used_texture_names</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">used_texture_names</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1"># Print the merged used texture names</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Used texture names in </span><span class="si">{</span><span class="n">building_folder</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">all_used_texture_names</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1"># Delete unused textures in the wenli directory</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 删除</span>
 </span></span><span class="line"><span class="cl">    <span class="n">wenli_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">building_folder</span><span class="p">,</span> <span class="s1">&#39;wenli&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">delete_unused_textures</span><span class="p">(</span><span class="n">wenli_dir</span><span class="p">,</span> <span class="n">all_used_texture_names</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">root_directory</span> <span class="o">=</span> <span class="s2">&#34;E:/UrbanBIS_useful/mesh/Yuehai&#34;</span>  <span class="c1"># Adjust this based on your directory structure</span>
+</span></span><span class="line"><span class="cl">    <span class="n">root_directory</span> <span class="o">=</span> <span class="s2">&#34;E:/UrbanBIS_useful/mesh/Yuehai&#34;</span>  
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1"># Iterate through all subdirectories in the &#34;Longhua&#34; folder</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 遍历文件夹</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">building_folder</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">root_directory</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">        <span class="n">building_folder_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_directory</span><span class="p">,</span> <span class="n">building_folder</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1"># Check if the item is a directory</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">building_folder_path</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">            <span class="n">process_building_folder</span><span class="p">(</span><span class="n">root_directory</span><span class="p">,</span> <span class="n">building_folder</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="对建筑进行划分">对建筑进行划分</h3>
-<p>好像只能纯手工去干，没想到什么好方法</p>
+<p>在进行划分和第二次清洗后，得到652可用房屋mesh文件</p>
 <h3 id="给之前的building3d建筑加纹理-">给之前的Building3D建筑加纹理 :（</h3>
-<p>继续学opengl，但感觉可以用另一种方法解决。</p>
-<h3 id="搜集多目标追踪的评价指标相关内容并制作ppt">搜集多目标追踪的评价指标相关内容，并制作ppt</h3>
-
+<p>要在原有数据集的基础上添加纹理，最好的方法应该是在原来obj文件的基础上添加纹理坐标，然后使用外部mtl加载纹理图片，这里有必要学习一下，一个obj文件是如何加载一个外部纹理图片的。</p>
+<p>想要构成一个面至少需要三个顶点。</p>
+<p>下面是一个标准正方体的obj文件格式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">v 1.000000 1.000000 -1.000000
+</span></span><span class="line"><span class="cl">v 1.000000 -1.000000 -1.000000
+</span></span><span class="line"><span class="cl">v 1.000000 1.000000 1.000000
+</span></span><span class="line"><span class="cl">v 1.000000 -1.000000 1.000000
+</span></span><span class="line"><span class="cl">v -1.000000 1.000000 -1.000000
+</span></span><span class="line"><span class="cl">v -1.000000 -1.000000 -1.000000
+</span></span><span class="line"><span class="cl">v -1.000000 1.000000 1.000000
+</span></span><span class="line"><span class="cl">v -1.000000 -1.000000 1.000000
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">f 1 5 7 3
+</span></span><span class="line"><span class="cl">f 4 3 7 8
+</span></span><span class="line"><span class="cl">f 8 7 5 6
+</span></span><span class="line"><span class="cl">f 6 2 4 8
+</span></span><span class="line"><span class="cl">f 2 1 3 4
+</span></span><span class="line"><span class="cl">f 6 5 1 2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>现在这个obj没有法线坐标也没有纹理坐标，仅仅作为展示一个模型如何通过连点成面构成一个简单的正方体mesh,可以看到每一个面都是由四个点连线得到，总共构成六个面。</p>
+<p>加上顶点法线坐标，用来表示面的朝向</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">v 1.000000 1.000000 -1.000000
+</span></span><span class="line"><span class="cl">v 1.000000 -1.000000 -1.000000
+</span></span><span class="line"><span class="cl">v 1.000000 1.000000 1.000000
+</span></span><span class="line"><span class="cl">v 1.000000 -1.000000 1.000000
+</span></span><span class="line"><span class="cl">v -1.000000 1.000000 -1.000000
+</span></span><span class="line"><span class="cl">v -1.000000 -1.000000 -1.000000
+</span></span><span class="line"><span class="cl">v -1.000000 1.000000 1.000000
+</span></span><span class="line"><span class="cl">v -1.000000 -1.000000 1.000000
+</span></span><span class="line"><span class="cl">vn -0.0000 1.0000 -0.0000
+</span></span><span class="line"><span class="cl">vn -0.0000 -0.0000 1.0000
+</span></span><span class="line"><span class="cl">vn -1.0000 -0.0000 -0.0000
+</span></span><span class="line"><span class="cl">vn -0.0000 -1.0000 -0.0000
+</span></span><span class="line"><span class="cl">vn 1.0000 -0.0000 -0.0000
+</span></span><span class="line"><span class="cl">vn -0.0000 -0.0000 -1.0000
+</span></span><span class="line"><span class="cl">f 1//1 5//1 7//1 3//1
+</span></span><span class="line"><span class="cl">f 4//2 3//2 7//2 8//2
+</span></span><span class="line"><span class="cl">f 8//3 7//3 5//3 6//3
+</span></span><span class="line"><span class="cl">f 6//4 2//4 4//4 8//4
+</span></span><span class="line"><span class="cl">f 2//5 1//5 3//5 4//5
+</span></span><span class="line"><span class="cl">f 6//6 5//6 1//6 2//6
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在表示面的那一列，如“1//1”中间空出来的部分是留给纹理坐标。</p>
+<p>为了能够把纹理映射(Map)到一个面上，我们需要指定一个面的每个顶点各自对应纹理的哪个部分。这样每个顶点就会关联着一个纹理坐标(Texture Coordinate)，用来标明该从纹理图像的哪个部分采样。之后在图形的其它片段上进行片段插值(Fragment Interpolation)。</p>
+<p>单个纹理坐标只需要处理二维即可，因为纹理图片只需要考虑二维表面上的映射问题。</p>
+<p>像下面图片所示，指定了图片的三个点，之后把三个点分别链接到三个顶点坐标上，就表示这张纹理在哪一个面上
+<img src="/p/mesh/%E4%B8%89%E8%A7%92.png"
+	width="335"
+	height="260"
+	srcset="/p/mesh/%E4%B8%89%E8%A7%92_hu7ec858adda0410c5677f58d86d02f006_93197_480x0_resize_box_3.png 480w, /p/mesh/%E4%B8%89%E8%A7%92_hu7ec858adda0410c5677f58d86d02f006_93197_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Alt text"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="309px"
+	
+>
+纹理坐标:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">vt    0.0f  0.0f  # 左下角
+</span></span><span class="line"><span class="cl">vt    1.0f  0.0f  # 右下角
+</span></span><span class="line"><span class="cl">vt    0.5f  1.0f  # 上中
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>知道以上的内容后，准备一张纹理图片(texture.jpg),然后把这张纹理图完整的bia到正方体的每一个面上，obj内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mtllib untitled.mtl
+</span></span><span class="line"><span class="cl">v 1.000000 1.000000 -1.000000
+</span></span><span class="line"><span class="cl">v 1.000000 -1.000000 -1.000000
+</span></span><span class="line"><span class="cl">v 1.000000 1.000000 1.000000
+</span></span><span class="line"><span class="cl">v 1.000000 -1.000000 1.000000
+</span></span><span class="line"><span class="cl">v -1.000000 1.000000 -1.000000
+</span></span><span class="line"><span class="cl">v -1.000000 -1.000000 -1.000000
+</span></span><span class="line"><span class="cl">v -1.000000 1.000000 1.000000
+</span></span><span class="line"><span class="cl">v -1.000000 -1.000000 1.000000
+</span></span><span class="line"><span class="cl">vn -0.0000 1.0000 -0.0000
+</span></span><span class="line"><span class="cl">vn -0.0000 -0.0000 1.0000
+</span></span><span class="line"><span class="cl">vn -1.0000 -0.0000 -0.0000
+</span></span><span class="line"><span class="cl">vn -0.0000 -1.0000 -0.0000
+</span></span><span class="line"><span class="cl">vn 1.0000 -0.0000 -0.0000
+</span></span><span class="line"><span class="cl">vn -0.0000 -0.0000 -1.0000
+</span></span><span class="line"><span class="cl">#这四个点代表整张图片全部用到
+</span></span><span class="line"><span class="cl">vt 0 0
+</span></span><span class="line"><span class="cl">vt 1 0
+</span></span><span class="line"><span class="cl">vt 1 1
+</span></span><span class="line"><span class="cl">vt 0 1
+</span></span><span class="line"><span class="cl">f 1/1/1 5/2/1 7/3/1 3/4/1
+</span></span><span class="line"><span class="cl">f 4/1/2 3/2/2 7/3/2 8/4/2
+</span></span><span class="line"><span class="cl">f 8/1/3 7/2/3 5/3/3 6/4/3
+</span></span><span class="line"><span class="cl">f 6/1/4 2/2/4 4/3/4 8/4/4
+</span></span><span class="line"><span class="cl">f 2/1/5 1/2/5 3/3/5 4/4/5
+</span></span><span class="line"><span class="cl">f 6/1/6 5/2/6 1/3/6 2/4/6
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后效果如下图所示：</p>
+<h2 id="一些常用命令总结">一些常用命令总结</h2>
+<p>powershell终端下运行该命令可以创建多个序列号文件夹(windows)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="mf">1</span><span class="p">.</span><span class="mf">.100</span> <span class="p">|</span> <span class="nb">ForEach-Object</span> <span class="p">{</span><span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Path</span> <span class="p">(</span><span class="s2">&#34;building</span><span class="nv">$_</span><span class="s2">&#34;</span><span class="p">)}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>统计一个文件夹下特定文件名后缀的文件数量,以obj文件举例</p>
+<p>windows（cmd）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl"><span class="k">dir</span> /b /s /a-d <span class="s2">&#34;C:\Path\To\Your\Folder\*.obj&#34;</span> <span class="p">|</span> find /c /v <span class="s2">&#34;&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>linux</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find /path/to/your/folder -type f -name <span class="s2">&#34;*.obj&#34;</span> <span class="p">|</span> wc -l
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 
