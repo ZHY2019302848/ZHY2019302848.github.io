@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Wonder3D环境配置 项目仓库 项目论文 准备系统环境 系统为ubuntu18.04以上系统，anaconda环境装好，cuda版本为11.8或'>
-<title>Wonder3D项目环境配置和运行</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='ratyrix相机操作简述 一.硬件的连接以及网络的设置 先插好必要的线，一根电源线，一根网线（师兄说两根网线可以提高视频的帧率，但因为驱动有问'>
+<title>光场相机的操作以及相关知识</title>
 
-<link rel='canonical' href='https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/'>
+<link rel='canonical' href='https://ZHY2019302848.github.io/p/%E5%85%89%E5%9C%BA%E7%9B%B8%E6%9C%BA%E7%9A%84%E6%93%8D%E4%BD%9C%E4%BB%A5%E5%8F%8A%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/'>
 
-<link rel="stylesheet" href="/scss/style.min.f260df320e6fda79722dc5e57340e38ef02a1623b751794ace472307bbc6d6c1.css"><meta property='og:title' content='Wonder3D项目环境配置和运行'>
-<meta property='og:description' content='Wonder3D环境配置 项目仓库 项目论文 准备系统环境 系统为ubuntu18.04以上系统，anaconda环境装好，cuda版本为11.8或'>
-<meta property='og:url' content='https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/'>
+<link rel="stylesheet" href="/scss/style.min.f260df320e6fda79722dc5e57340e38ef02a1623b751794ace472307bbc6d6c1.css"><meta property='og:title' content='光场相机的操作以及相关知识'>
+<meta property='og:description' content='ratyrix相机操作简述 一.硬件的连接以及网络的设置 先插好必要的线，一根电源线，一根网线（师兄说两根网线可以提高视频的帧率，但因为驱动有问'>
+<meta property='og:url' content='https://ZHY2019302848.github.io/p/%E5%85%89%E5%9C%BA%E7%9B%B8%E6%9C%BA%E7%9A%84%E6%93%8D%E4%BD%9C%E4%BB%A5%E5%8F%8A%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/'>
 <meta property='og:site_name' content='ZHY の blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='server' /><meta property='article:published_time' content='2023-11-15T19:37:07&#43;08:00'/><meta property='article:modified_time' content='2023-11-15T19:37:07&#43;08:00'/><meta property='og:image' content='https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/fig_teaser.png' />
-<meta name="twitter:title" content="Wonder3D项目环境配置和运行">
-<meta name="twitter:description" content="Wonder3D环境配置 项目仓库 项目论文 准备系统环境 系统为ubuntu18.04以上系统，anaconda环境装好，cuda版本为11.8或"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://ZHY2019302848.github.io/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/fig_teaser.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-01-11T19:04:42&#43;08:00'/><meta property='article:modified_time' content='2024-01-11T19:04:42&#43;08:00'/>
+<meta name="twitter:title" content="光场相机的操作以及相关知识">
+<meta name="twitter:description" content="ratyrix相机操作简述 一.硬件的连接以及网络的设置 先插好必要的线，一根电源线，一根网线（师兄说两根网线可以提高视频的帧率，但因为驱动有问">
     <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
@@ -255,17 +254,14 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#准备系统环境">准备系统环境</a></li>
-    <li><a href="#安装环境">安装环境</a></li>
-    <li><a href="#运行项目">运行项目</a></li>
-    <li><a href="#尝试其他图片">尝试其他图片</a>
+    <li><a href="#一硬件的连接以及网络的设置">一.硬件的连接以及网络的设置</a></li>
+    <li><a href="#二软件的使用">二.软件的使用</a>
       <ol>
-        <li><a href="#car1">car1</a></li>
-        <li><a href="#car2">car2</a></li>
-        <li><a href="#car3">car3</a></li>
+        <li><a href="#软件与相机的连接">软件与相机的连接</a></li>
+        <li><a href="#相机的具体使用">相机的具体使用</a></li>
       </ol>
     </li>
-    <li><a href="#总结">总结</a></li>
+    <li><a href="#三深度图的生成">三.深度图的生成</a></li>
   </ol>
 </nav>
         </div>
@@ -277,35 +273,15 @@
 
 
             <main class="main full-width">
-    <article class="has-image main-article">
+    <article class="main-article">
     <header class="article-header">
-        <div class="article-image">
-            <a href="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/">
-                <img src="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/fig_teaser_hu5f338f1929158fc1dbd893b6f223493f_1271319_800x0_resize_box_3.png"
-                        srcset="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/fig_teaser_hu5f338f1929158fc1dbd893b6f223493f_1271319_800x0_resize_box_3.png 800w, /p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/fig_teaser_hu5f338f1929158fc1dbd893b6f223493f_1271319_1600x0_resize_box_3.png 1600w"
-                        width="800" 
-                        height="695" 
-                        loading="lazy"
-                        alt="Featured image of post Wonder3D项目环境配置和运行" />
-                
-            </a>
-        </div>
-    
 
     <div class="article-details">
-    
-    <header class="article-category">
-        
-            <a href="/categories/%E5%AE%9E%E8%B7%B5/" >
-                实践
-            </a>
-        
-    </header>
     
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/">Wonder3D项目环境配置和运行</a>
+            <a href="/p/%E5%85%89%E5%9C%BA%E7%9B%B8%E6%9C%BA%E7%9A%84%E6%93%8D%E4%BD%9C%E4%BB%A5%E5%8F%8A%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">光场相机的操作以及相关知识</a>
         </h2>
     
         
@@ -327,7 +303,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2023/11/15</time>
+                <time class="article-time--published">2024/01/11</time>
             </div>
         
 
@@ -342,7 +318,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 3 分钟
+                    阅读时长: 2 分钟
                 </time>
             </div>
         
@@ -357,238 +333,27 @@
     <section class="article-content">
     
     
-    <h1 id="wonder3d环境配置">Wonder3D环境配置</h1>
-<p><a class="link" href="https://github.com/xxlong0/Wonder3D"  target="_blank" rel="noopener"
-    >项目仓库</a></p>
-<p><a class="link" href="https://arxiv.org/abs/2310.15008"  target="_blank" rel="noopener"
-    >项目论文</a></p>
-<h2 id="准备系统环境">准备系统环境</h2>
-<p>系统为<strong>ubuntu18.04</strong>以上系统，<strong>anaconda</strong>环境装好，<strong>cuda</strong>版本为11.8或11.7，测试用12.2会报错，<strong>gcc</strong>版本8以上，<strong>python</strong>3.8以上，显卡确保<strong>显存</strong>足够，我先后在2080ti和titan显卡上均测试过，cuda版本为11.3和11.2，都会报cuda和pytorch版本不匹配的错，最后在4090上成功运行，所以一个准确合适的环境是重要前提。</p>
-<h2 id="安装环境">安装环境</h2>
-<p>只要上一步系统环境准备完好，接下来依照官方教程即可</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">conda create -n wonder3d <span class="nv">python</span><span class="o">=</span>3.10 <span class="c1">#这里用3.10是怕再有奇怪的报错，所以把版本调高</span>
-</span></span><span class="line"><span class="cl">conda activate wonder3d
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>这两步结束后，先查看python和pip的路径是conda虚拟环境，用<code>which python</code>和<code>which pip</code>查询，如果返回时虚拟环境的路径，可以跳过这一步骤，如果不是
-，显示为local路径，可以先退出现在的base环境，然后在换回来wonder3d环境</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">conda deactivate <span class="c1">#退出wonder3d</span>
-</span></span><span class="line"><span class="cl">conda deactivate <span class="c1">#退出base</span>
-</span></span><span class="line"><span class="cl">conda activate wonder3d <span class="c1">#重新激活环境</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>下面是项目下载和必要环境的安装</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">git clone https://github.com/xxlong0/Wonder3D #这里如果速度慢可以参考上一篇<span class="s2">&#34;服务器网络问题解决方案&#34;</span>，但这个只能用于大学教研室或是公司本地服务器
-</span></span><span class="line"><span class="cl"><span class="k">cd</span> Wonder3D
-</span></span><span class="line"><span class="cl">pip install -r requirements.txt #这要下很久，可以去泡杯茶
-</span></span><span class="line"><span class="cl">pip install git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch #这里很容易出问题，大部分问题都可以在<span class="s2">&#34;准备系统环境&#34;</span>中解决
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>安装完后看一下自己torch是否安装成功</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">__verison__</span><span class="p">)</span><span class="c1">#查看版本号是否对应后退出即可</span>
-</span></span><span class="line"><span class="cl"><span class="n">exit</span><span class="p">()</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="运行项目">运行项目</h2>
-<p>先下载<a class="link" href="https://connecthkuhk-my.sharepoint.com/personal/xxlong_connect_hku_hk/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fxxlong%5Fconnect%5Fhku%5Fhk%2FDocuments%2Fwonder3d%2Fpretrained%2Dweights%2Fckpts&amp;ga=1"  target="_blank" rel="noopener"
-    >checkpoint</a>文件复制到指定目录下</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Wonder3D
-</span></span><span class="line"><span class="cl">|-- ckpts
-</span></span><span class="line"><span class="cl">    |-- unet
-</span></span><span class="line"><span class="cl">    |-- scheduler.bin
-</span></span><span class="line"><span class="cl">    ...
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>之后可以直接运行命令看一下效果，代码会默认跑一只猫头鹰</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bash run_test.sh
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>同理，此处出现错误请返回<em>系统环境</em>和<em>安装环境</em>这两个步骤查看是否出错，如果按照错误提示打补丁很可能越补窟窿越大
-运行完成后可以在<code>./outputs</code>下查找相关文件，应该6个一一对应的法线图和色彩图</p>
-<p>之后生成mesh obj文件，这里我只试了官方的第一种方法</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> ./instant-nsr-pl
-</span></span><span class="line"><span class="cl">bash run.sh output_folder_path scene_name
-</span></span><span class="line"><span class="cl"><span class="c1">#第二条命令示例为:</span>
-</span></span><span class="line"><span class="cl">bash run.sh  ../outputs/cropsize-192-cfg3.0 owl
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>生成完成后可以用<code>ls</code>命令找哪个文件夹是新生成的说明obj文件就存在哪了</p>
-<p>如果想要替换自己的图片，先把图片的背景去掉，在线网站就可以完成，然后去找<code>/wonder/configs/mvdiffusion-joint-ortho-6views.yaml</code>，修改如下内容即可
-<img src="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/config.png"
-	width="933"
-	height="776"
-	srcset="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/config_hu680ea5fa53f236b96ac97b11244b0a3f_53960_480x0_resize_box_3.png 480w, /p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/config_hu680ea5fa53f236b96ac97b11244b0a3f_53960_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="120"
-		data-flex-basis="288px"
-	
-></p>
-<h2 id="尝试其他图片">尝试其他图片</h2>
-<p>我用该方法尝试了下最近师姐让找的car图片，因为该项目训练时没有车的训练模型，所以图生3D的效果不是十分理想。</p>
-<h3 id="car1">car1</h3>
-<p><img src="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car1.png"
-	width="666"
-	height="375"
-	srcset="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car1_hua33df5c553c5de33c17b0e9beeec6816_122583_480x0_resize_box_3.png 480w, /p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car1_hua33df5c553c5de33c17b0e9beeec6816_122583_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="原车"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="177"
-		data-flex-basis="426px"
-	
-><img src="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car1mesh.png"
-	width="697"
-	height="420"
-	srcset="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car1mesh_hu7f4f862421abf55d2bf8e16b8a1e20ef_133668_480x0_resize_box_3.png 480w, /p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car1mesh_hu7f4f862421abf55d2bf8e16b8a1e20ef_133668_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="生成mesh"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="165"
-		data-flex-basis="398px"
-	
-></p>
-<h3 id="car2">car2</h3>
-<p><img src="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car2.png"
-	width="666"
-	height="375"
-	srcset="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car2_hu0a7c5d1860557a59974962ad216667a4_221663_480x0_resize_box_3.png 480w, /p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car2_hu0a7c5d1860557a59974962ad216667a4_221663_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="原车"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="177"
-		data-flex-basis="426px"
-	
-><img src="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car2mesh.png"
-	width="658"
-	height="487"
-	srcset="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car2mesh_hube032fac02885aef4f25710d86981094_183729_480x0_resize_box_3.png 480w, /p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car2mesh_hube032fac02885aef4f25710d86981094_183729_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="生成mesh"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="135"
-		data-flex-basis="324px"
-	
-></p>
-<h3 id="car3">car3</h3>
-<p><img src="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car3.png"
-	width="667"
-	height="374"
-	srcset="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car3_hu1a9eed947bd6821309cee077ec571e3e_130067_480x0_resize_box_3.png 480w, /p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car3_hu1a9eed947bd6821309cee077ec571e3e_130067_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="原车"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="178"
-		data-flex-basis="428px"
-	
-><img src="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car3mesh.png"
-	width="664"
-	height="519"
-	srcset="/p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car3mesh_hu5f95e2064f5cf6dd25d7a4e0df34aee3_149793_480x0_resize_box_3.png 480w, /p/wonder3d%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BF%90%E8%A1%8C/car3mesh_hu5f95e2064f5cf6dd25d7a4e0df34aee3_149793_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="生成mesh"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="127"
-		data-flex-basis="307px"
-	
-></p>
-<h2 id="总结">总结</h2>
-<p>锻炼了自己的环境配置功力，还有在项目介绍看到可以使用正交相机来完成对obj色彩的显示，原文如下：</p>
-<blockquote>
-<p>Our generated normals and color images are defined in orthographic views, so the reconstructed mesh is also in orthographic camera space. If you use MeshLab to view the meshes</p>
-</blockquote>
-<p>这个可以帮到我最近在研究的对对房屋mesh涂上迷彩的问题。</p>
+    <h1 id="ratyrix相机操作简述">ratyrix相机操作简述</h1>
+<h2 id="一硬件的连接以及网络的设置">一.硬件的连接以及网络的设置</h2>
+<p>先插好必要的线，一根电源线，一根网线（师兄说两根网线可以提高视频的帧率，但因为驱动有问题没有实现），插电源线的时候左扭右扭一下，切忌大力出奇迹</p>
+<p>因为所用主机为特制专用的德意志冯字辈12年<strong>RTX680</strong>_win7主机，其自身带有wifi蓝牙模块，所以没有插联网网线，工作中也没有必要使用联网功能，故不连wifi也不插联网网线。</p>
+<p>对于网络设备的相关参数设置，win+r-&gt;输入control（win11自带的设置一坨，还是老家伙便捷好使），找到网络适配器，在插线的网口适配器右键属性找到ipv4的设置，ip地址设置为私有地址，比如<code>169.254.0.23</code>,掩码设置为<code>255.255.0.0</code>,其余部分留空就好，之后保存应用退出。</p>
+<h2 id="二软件的使用">二.软件的使用</h2>
+<h3 id="软件与相机的连接">软件与相机的连接</h3>
+<p>软件在打开时会自动检查相机是否连接，如果显示无相机，则重新拔插电源线，再检测一遍，如果还是没有检测到，不用怀疑是不是<strong>一</strong>里面的设置有问题，直接重启电脑，拔插电源，重启软件，这三者交替使用，总有一次能检测到。</p>
+<h3 id="相机的具体使用">相机的具体使用</h3>
+<p>这部分涉及到大量图片部分，文字描述的效果有限，而德意志主机的网络条件很差，所以只能在主机上截图后用U
+盘导出来再构思该部分。</p>
+<h2 id="三深度图的生成">三.深度图的生成</h2>
+<p>软件实际上自带有深度图生成，但是其图像总归不是我们所需要的理想状态（完全是一堆乱七八糟五彩光线），所以在师兄的推荐下，尝试使用外部代码解决深度图的生成问题</p>
+<p>参考代码:<a class="link" href="https://github.com/freerafiki/PlenopticToolbox2.0"  target="_blank" rel="noopener"
+    >PlenopticToolbox2.0</a></p>
 
 </section>
 
 
     <footer class="article-footer">
     
-    <section class="article-tags">
-        
-            <a href="/tags/server/">server</a>
-        
-    </section>
-
 
     
     <section class="article-copyright">
@@ -612,28 +377,6 @@
     
 
     
-
-<aside class="related-content--wrapper">
-    <h2 class="section-title">相关文章</h2>
-    <div class="related-content">
-        <div class="flex article-list--tile">
-            
-                
-<article class="">
-    <a href="/p/mesh/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Mesh</h2>
-        </div>
-    </a>
-</article>
-
-            
-        </div>
-    </div>
-</aside>
 
      
     
