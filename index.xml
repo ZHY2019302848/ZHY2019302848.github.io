@@ -28,6 +28,17 @@
 &lt;p&gt;软件实际上自带有深度图生成，但是其图像总归不是我们所需要的理想状态（完全是一堆乱七八糟五彩光线），所以在师兄的推荐下，尝试使用外部代码解决深度图的生成问题&lt;/p&gt;
 &lt;p&gt;参考代码:&lt;a class=&#34;link&#34; href=&#34;https://github.com/freerafiki/PlenopticToolbox2.0&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;PlenopticToolbox2.0&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;按照步骤应该先编译一遍python包，输入命令&lt;code&gt;python setup.py build_ext --inplace&lt;/code&gt;即可，之后会根据你所使用的系统生成一个cpython文件，windows是.pyd,linux是.so,之后记住把该文件复制粘贴到&lt;code&gt;disparity&lt;/code&gt;文件夹中&lt;/p&gt;
+&lt;p&gt;之后我们把下载好的图片，选择一张processed图,并把下载的图片文件里的xml文件重名名和你图片相同名字后，复制粘贴到代码目录下，运行以下代码得到深度图：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;python disparity_sample.py beer/Beers_Processed.xml -dmin 0 -dmax 10 -scene &amp;#39;real&amp;#39; -format png
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;后面的&lt;code&gt;format&lt;/code&gt;参数可以改为titf&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -898,17 +909,11 @@ JDE采用联合检测和嵌入的方式，通过一个统一的深度学习模�
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git config --global http.proxy socks5 127.0.0.1:7890 &lt;span class=&#34;c1&#34;&gt;#端口号参考clash&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git config --global https.proxy socks5 127.0.0.1:7890 &lt;span class=&#34;c1&#34;&gt;#端口前面的ip地址参考开clash的主机ip&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git config --global https.proxy 127.0.0.1:7890
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git config --global https.proxy 127.0.0.1:7890  
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git config --global https.proxy 127.0.0.1:7890 &lt;span class=&#34;c1&#34;&gt;#端口号参考clash&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git config --global http.proxy 127.0.0.1:7890  &lt;span class=&#34;c1&#34;&gt;#端口前面的ip地址参考开clash的主机ip&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;如果报错提示不让写入修改，在最后加入&lt;code&gt;--replace-all&lt;/code&gt;，代码如下&lt;/p&gt;
@@ -919,7 +924,7 @@ JDE采用联合检测和嵌入的方式，通过一个统一的深度学习模�
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git config --global https.proxy 127.0.0.1:7890 --replace-all
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git config --global https.proxy 127.0.0.1:7890 --replace-all
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git config --global http.proxy 127.0.0.1:7890 --replace-all
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;服务器全局设置&#34;&gt;服务器全局设置&lt;/h2&gt;
@@ -979,7 +984,7 @@ JDE采用联合检测和嵌入的方式，通过一个统一的深度学习模�
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://ZHY2019302848.github.io/%E5%85%B3%E4%BA%8E/</guid>
-        <description>&lt;p&gt;I AM THE STORM THAT IS APPROACHING!&lt;/p&gt;
+        <description>&lt;p&gt;&lt;font face=&#34;微软雅黑&#34;&gt;与其感慨路难行，不如马上出发！&lt;/font&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
